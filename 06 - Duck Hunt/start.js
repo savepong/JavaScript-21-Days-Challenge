@@ -1,5 +1,8 @@
 (() => {
   // เริ่มเขียนโค้ด
+  var shotAudio = new Audio("shot.mp3");
+  var quackAudio = new Audio("quack.mp3");
+
   function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -55,6 +58,7 @@
   }
 
   function shootDuck(event) {
+    quackAudio.play();
     const duckElem = event.target;
     duckElem.style.transition = "top 2s";
     duckElem.style.top = `${window.innerHeight}px`;
@@ -77,6 +81,10 @@
     duckElems.forEach(({ duck, duckElem }) => {
       duckElem.interval = setInterval(() => moveDuck(duckElem, duck), 100);
       duckElem.addEventListener("click", shootDuck);
+    });
+
+    document.body.addEventListener("click", () => {
+      shotAudio.play();
     });
   }
 
