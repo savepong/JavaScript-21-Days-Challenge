@@ -48,7 +48,8 @@
   function run() {
     playBtnElem.addEventListener("click", onClick);
 
-    audioElem.addEventListener("loadeddata", onLoadedData);
+    onLoadedData();
+    // audioElem.addEventListener("loadeddata", onLoadedData);
     audioElem.addEventListener("timeupdate", onTimeUpdate);
     audioElem.addEventListener("ended", onEnded);
 
