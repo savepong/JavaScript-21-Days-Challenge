@@ -1,25 +1,25 @@
 (() => {
-  const audioElem = document.querySelector('audio');
-  const playBtnElem = document.querySelector('.play');
-  const progressBarElem = document.querySelector('.progress-bar');
-  const startTimeELem = document.querySelector('.start-time');
-  const endTimeElem = document.querySelector('.end-time');
+  const audioElem = document.querySelector("audio");
+  const playBtnElem = document.querySelector(".play");
+  const progressBarElem = document.querySelector(".progress-bar");
+  const startTimeELem = document.querySelector(".start-time");
+  const endTimeElem = document.querySelector(".end-time");
 
   function getDuration(time) {
-    const minute = Math.floor(time / 60 % 60).toString();
+    const minute = Math.floor((time / 60) % 60).toString();
     const second = Math.floor(time % 60)
       .toString()
-      .padStart(2, '0');
+      .padStart(2, "0");
     return `${minute}:${second}`;
   }
 
   function onClick() {
     if (audioElem.paused) {
       audioElem.play();
-      playBtnElem.className = 'pause';
+      playBtnElem.className = "pause";
     } else {
       audioElem.pause();
-      playBtnElem.className = 'play';
+      playBtnElem.className = "play";
     }
   }
 
@@ -34,7 +34,7 @@
   }
 
   function onEnded() {
-    playBtnElem.className = 'play';
+    playBtnElem.className = "play";
     audioElem.currentTime = 0;
   }
 
@@ -43,13 +43,13 @@
   }
 
   function run() {
-    playBtnElem.addEventListener('click', onClick);
+    playBtnElem.addEventListener("click", onClick);
 
-    audioElem.addEventListener('loadeddata', onLoadedData);
-    audioElem.addEventListener('timeupdate', onTimeUpdate);
-    audioElem.addEventListener('ended', onEnded);
+    audioElem.addEventListener("loadeddata", onLoadedData);
+    audioElem.addEventListener("timeupdate", onTimeUpdate);
+    // audioElem.addEventListener("ended", onEnded);
 
-    progressBarElem.addEventListener('input', onInput);
+    // progressBarElem.addEventListener("input", onInput);
   }
   run();
 })();
